@@ -1,4 +1,4 @@
-````markdown
+
 # Prédiction de la pollution horaire à Paris
 
 Ce projet permet de prédire les 24 prochaines heures de pollution sur Paris en utilisant un modèle LSTM entraîné sur des données horaires de pollution et météo. Le modèle est plus précis pour l'heure suivante, car il a été conçu sur des séquences horaires.
@@ -24,13 +24,14 @@ pip install -r requirements.txt
 1. Installer WAMP (ou tout serveur MySQL).
 2. Ouvrir **phpMyAdmin** et créer une base `pollution_db`.
 3. Importer le fichier SQL `db/pollution_db.sql` pour recréer la base avec les données.
-4. Créer un fichier `.env` à la racine du projet pour sécuriser les identifiants :
+4. Créer un fichier `.env` à la racine du projet pour sécuriser les identifiants et la clé API OpenAQ :
 
 ```
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=votre_mot_de_passe
 DB_NAME=pollution_db
+OPENAQ_API_KEY=votre_cle_api
 ```
 
 > Ne pas pousser le fichier `.env` sur GitHub.
@@ -41,7 +42,7 @@ DB_NAME=pollution_db
 python pipeline_data.py
 ```
 
-Ce script nettoie, agrège et prépare les séquences horaires pour l'entraînement.
+Ce script nettoie, agrège et prépare les séquences horaires pour l'entraînement. Il utilise la clé API OpenAQ pour récupérer les mesures de pollution.
 
 ### 4. Entraînement du modèle
 
@@ -58,6 +59,5 @@ Le script utilise le modèle entraîné pour prédire les 24 prochaines heures d
 ## Remarques
 
 * Les fichiers `.env` et la base de données ne doivent pas être versionnés pour des raisons de sécurité.
+* La clé API OpenAQ est nécessaire pour récupérer les mesures de pollution en temps réel.
 * Le modèle peut être réentraîné régulièrement avec de nouvelles données pour améliorer ses performances.
-
-
