@@ -19,7 +19,11 @@ Ce projet permet de prédire les 24 prochaines heures de pollution sur Paris en 
 pip install -r requirements.txt
 ````
 
-### 2. Configuration de la base de données
+Parfait, ton README inclut déjà la mention de la clé API OpenAQ, mais on peut le reformuler légèrement pour que ce soit plus clair et visible. Par exemple, on peut préciser juste après la section de configuration de la base de données :
+
+---
+
+### 2. Configuration de la base de données et API
 
 1. Installer WAMP (ou tout serveur MySQL).
 2. Ouvrir **phpMyAdmin** et créer une base `pollution_db`.
@@ -34,6 +38,7 @@ DB_NAME=pollution_db
 OPENAQ_API_KEY=votre_cle_api
 ```
 
+> La clé API OpenAQ est obligatoire pour récupérer les mesures de pollution en temps réel.
 > Ne pas pousser le fichier `.env` sur GitHub.
 
 ### 3. Préparation des données
